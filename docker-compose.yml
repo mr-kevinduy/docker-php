@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  application:
+    image: debian
+    volumes:
+      - ./:/var/www/app
+  workspace:
+    image: kevinduy/php
+    restart: always
+    volumes_from:
+      - application
+    tty: true
