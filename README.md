@@ -38,6 +38,20 @@ winpty docker-compose exec workspace bash
 
 # 3. Changelog
 
+### [V8.0]
+- Ubuntu 20.04
+- php 8.1
+- nodejs 14.x
+- composer
+- fpm
+- supervisor
+- support. for laravel 9x
+- php config:
+  + display_errors = On
+  +.memory_limit = 512M
+  + post_max_size = 500M
+  + upload_max_filesize = 500M
+
 ### [V2.0]
 - php 7.3
 - nodejs 12.x
