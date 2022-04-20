@@ -2,7 +2,16 @@
 
 apt update
 apt upgrade -y
-apt install -y ca-certificates apt-transport-https software-properties-common
+apt install -y --no-install-recommends lsb-release ca-certificates apt-transport-https software-properties-common locales
+
+locale-gen en_US.UTF-8
+
+echo "LANGUAGE=en_US.UTF-8" >> /etc/default/locale
+echo "LC_ALL=en_US.UTF-8" >> /etc/default/locale
+echo "LC_CTYPE=UTF-8" >> /etc/default/locale
+
+export LANG=en_US.UTF-8
+
 add-apt-repository ppa:ondrej/php -y
 apt update
 apt install -y --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages \
@@ -20,7 +29,6 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
   php8.1-pdo \
   php8.1-imap \
   php8.1-soap \
-  php8.1-json \
   php8.1-zip \
   php8.1-mbstring \
   php8.1-imagick \
@@ -28,7 +36,6 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
   php8.1-redis \
   php8.1-mysql \
   php8.1-pgsql \
-  php8.1-sqlite \
   php8.1-sqlite3 \
   php8.1-xdebug \
   php8.1-intl
@@ -92,8 +99,8 @@ ln -s /root/.composer/vendor/bin/phpcs /usr/bin/phpcs
 
 # ============ Install nodejs
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
-apt-get install -y nodejs
+apt install -y nodejs
 npm install -g yarn parcel-bundler gulp-cli
 
 # ============ Clean up
-apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
