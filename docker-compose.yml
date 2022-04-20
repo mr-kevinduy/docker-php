@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  workspace:
-    image: kevinduy/php
+  app:
+    build: .
     tty: true
     restart: always
     volumes:

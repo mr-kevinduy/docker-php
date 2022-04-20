@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 MAINTAINER KevinDuy <mr.kevinduy@gmail.com>
 
@@ -9,7 +9,7 @@ ADD install.sh /install.sh
 
 RUN chmod +x /*.sh
 
-RUN ./install.sh
+RUN /install.sh
 
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
