@@ -5,7 +5,8 @@ Docker for php, composer, linux packages, nodejs, yarn, parcel-bundler and gulp-
 
 # 1. Main
 
-- kevinduy/php:2.0 (kevinduy/php:latest)
+- kevinduy/php:8.0 (kevinduy/php:latest)
+- kevinduy/php:2.0
 - kevinduy/php:1.0
 
 # 2. Docker-compose
@@ -42,7 +43,7 @@ winpty docker-compose exec workspace bash
 - Ubuntu 20.04
 - php 8.1
 - nodejs 14.x
-- composer
+- composer v2
 - fpm
 - supervisor
 - support. for laravel 9x
@@ -55,7 +56,7 @@ winpty docker-compose exec workspace bash
 ### [V2.0]
 - php 7.3
 - nodejs 12.x
-- composer
+- composer v1
 - fpm
 - supervisor
 - support. for laravel 8x, 7x, 6x, 5x, ...
@@ -68,7 +69,7 @@ winpty docker-compose exec workspace bash
 ### [V1.0]
 - php 7.2
 - nodejs 8.x
-- composer
+- composer v1
 - fpm
 - supervisor
 - for laravel <= 7.x
