@@ -42,6 +42,7 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
 
 apt install -y --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages \
   gcc \
+  g++ \
   make \
   autoconf \
   libc-dev \
@@ -98,9 +99,9 @@ composer global require "squizlabs/php_codesniffer=*"
 ln -s /root/.composer/vendor/bin/phpcs /usr/bin/phpcs
 
 # ============ Install nodejs
-curl -sL https://deb.nodesource.com/setup_14.x | bash -
-apt install -y nodejs
-npm install -g yarn parcel-bundler gulp-cli
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+apt-get install -y nodejs
+npm install -g yarn
 
 # ============ Clean up
 # apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

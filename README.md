@@ -5,7 +5,8 @@ Docker for php, composer, linux packages, nodejs, yarn, parcel-bundler and gulp-
 
 # 1. Main
 
-- kevinduy/php:8.0 (kevinduy/php:latest)
+- kevinduy/php:8.1 (kevinduy/php:latest)
+- kevinduy/php:8.0
 - kevinduy/php:2.0
 - kevinduy/php:1.0
 
@@ -38,6 +39,22 @@ winpty docker-compose exec workspace bash
 ```
 
 # 3. Changelog
+
+### [V8.1]
+- Ubuntu 22.04
+- php 8.1
+- nodejs 16.x
+- npm
+- yarn
+- composer v2
+- fpm
+- supervisor
+- support. for laravel 9x
+- php config:
+  + display_errors = On
+  +.memory_limit = 512M
+  + post_max_size = 500M
+  + upload_max_filesize = 500M
 
 ### [V8.0]
 - Ubuntu 20.04
