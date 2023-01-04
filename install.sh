@@ -15,30 +15,30 @@ export LANG=en_US.UTF-8
 add-apt-repository ppa:ondrej/php -y
 apt update
 apt install -y --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages \
-  php8.1 \
-  php8.1-dev \
-  php8.1-fpm \
-  php8.1-common \
-  php8.1-xml \
-  php8.1-xmlrpc \
-  php8.1-curl \
-  php8.1-dev \
-  php8.1-cli \
-  php8.1-gd \
-  php8.1-bcmath \
-  php8.1-pdo \
-  php8.1-imap \
-  php8.1-soap \
-  php8.1-zip \
-  php8.1-mbstring \
-  php8.1-imagick \
-  php8.1-opcache \
-  php8.1-redis \
-  php8.1-mysql \
-  php8.1-pgsql \
-  php8.1-sqlite3 \
-  php8.1-xdebug \
-  php8.1-intl
+  php7.4 \
+  php7.4-dev \
+  php7.4-fpm \
+  php7.4-common \
+  php7.4-xml \
+  php7.4-xmlrpc \
+  php7.4-curl \
+  php7.4-dev \
+  php7.4-cli \
+  php7.4-gd \
+  php7.4-bcmath \
+  php7.4-pdo \
+  php7.4-imap \
+  php7.4-soap \
+  php7.4-zip \
+  php7.4-mbstring \
+  php7.4-imagick \
+  php7.4-opcache \
+  php7.4-redis \
+  php7.4-mysql \
+  php7.4-pgsql \
+  php7.4-sqlite3 \
+  php7.4-xdebug \
+  php7.4-intl
 
 apt install -y --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages \
   gcc \
@@ -70,7 +70,7 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
 
 # Install MCrypt
 # printf "\n" | pecl install mcrypt-1.0.4
-# bash -c "echo extension=mcrypt.so > /etc/php/8.1/mods-available/mcrypt.ini"
+# bash -c "echo extension=mcrypt.so > /etc/php/7.4/mods-available/mcrypt.ini"
 # bash -c "echo extension=/usr/lib/php/20200930/mcrypt.so > /etc/php/8.0/cli/conf.d/mcrypt.ini"
 # bash -c "echo extension=/usr/lib/php/20200930/mcrypt.so > /etc/php/8.0/apache2/conf.d/mcrypt.ini"
 
@@ -78,17 +78,18 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
 # ufw allow 'Nginx HTTP'
 
 # Remove load xdebug extension
-sed -i 's/^/;/g' /etc/php/8.1/cli/conf.d/20-xdebug.ini
+sed -i 's/^/;/g' /etc/php/7.4/cli/conf.d/20-xdebug.ini
 
 # Set FPM
-sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/8.1/fpm/pool.d/www.conf
-sed -i "s/display_errors = .*/display_errors = On/" /etc/php/8.1/fpm/php.ini
-sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/8.1/fpm/php.ini
-sed -i "s/post_max_size = .*/post_max_size = 500M/" /etc/php/8.1/fpm/php.ini
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 500M/" /etc/php/8.1/fpm/php.ini
+sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.4/fpm/pool.d/www.conf
+sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.4/fpm/php.ini
+sed -i "s/memory_limit = .*/memory_limit = 1024M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 512M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 1024M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php/7.4/fpm/php.ini
 mkdir -p /var/run/php
 mkdir -p /var/log/php-fpm
-touch /var/run/php/php8.1-fpm.sock
+touch /var/run/php/php7.4-fpm.sock
 
 # ============ Install Composer, PHPCS
 curl -sS https://getcomposer.org/installer | php
