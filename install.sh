@@ -15,30 +15,30 @@ export LANG=en_US.UTF-8
 add-apt-repository ppa:ondrej/php -y
 apt update
 apt install -y --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages \
-  php7.4 \
-  php7.4-dev \
-  php7.4-fpm \
-  php7.4-common \
-  php7.4-xml \
-  php7.4-xmlrpc \
-  php7.4-curl \
-  php7.4-dev \
-  php7.4-cli \
-  php7.4-gd \
-  php7.4-bcmath \
-  php7.4-pdo \
-  php7.4-imap \
-  php7.4-soap \
-  php7.4-zip \
-  php7.4-mbstring \
-  php7.4-imagick \
-  php7.4-opcache \
-  php7.4-redis \
-  php7.4-mysql \
-  php7.4-pgsql \
-  php7.4-sqlite3 \
-  php7.4-xdebug \
-  php7.4-intl
+  php7.2 \
+  php7.2-dev \
+  php7.2-fpm \
+  php7.2-common \
+  php7.2-xml \
+  php7.2-xmlrpc \
+  php7.2-curl \
+  php7.2-dev \
+  php7.2-cli \
+  php7.2-gd \
+  php7.2-bcmath \
+  php7.2-pdo \
+  php7.2-imap \
+  php7.2-soap \
+  php7.2-zip \
+  php7.2-mbstring \
+  php7.2-imagick \
+  php7.2-opcache \
+  php7.2-redis \
+  php7.2-mysql \
+  php7.2-pgsql \
+  php7.2-sqlite3 \
+  php7.2-xdebug \
+  php7.2-intl
 
 apt install -y --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages \
   gcc \
@@ -70,7 +70,7 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
 
 # Install MCrypt
 # printf "\n" | pecl install mcrypt-1.0.4
-# bash -c "echo extension=mcrypt.so > /etc/php/7.4/mods-available/mcrypt.ini"
+# bash -c "echo extension=mcrypt.so > /etc/php/7.2/mods-available/mcrypt.ini"
 # bash -c "echo extension=/usr/lib/php/20200930/mcrypt.so > /etc/php/8.0/cli/conf.d/mcrypt.ini"
 # bash -c "echo extension=/usr/lib/php/20200930/mcrypt.so > /etc/php/8.0/apache2/conf.d/mcrypt.ini"
 
@@ -78,21 +78,22 @@ apt install -y --no-install-recommends --allow-downgrades --allow-remove-essenti
 # ufw allow 'Nginx HTTP'
 
 # Remove load xdebug extension
-sed -i 's/^/;/g' /etc/php/7.4/cli/conf.d/20-xdebug.ini
+sed -i 's/^/;/g' /etc/php/7.2/cli/conf.d/20-xdebug.ini
 
 # Set FPM
-sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.4/fpm/pool.d/www.conf
-sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.4/fpm/php.ini
-sed -i "s/memory_limit = .*/memory_limit = 1024M/" /etc/php/7.4/fpm/php.ini
-sed -i "s/post_max_size = .*/post_max_size = 512M/" /etc/php/7.4/fpm/php.ini
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 1024M/" /etc/php/7.4/fpm/php.ini
-sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php/7.4/fpm/php.ini
+sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.2/fpm/pool.d/www.conf
+sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.2/fpm/php.ini
+sed -i "s/memory_limit = .*/memory_limit = 1024M/" /etc/php/7.2/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 512M/" /etc/php/7.2/fpm/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 1024M/" /etc/php/7.2/fpm/php.ini
+sed -i "s/max_execution_time = .*/max_execution_time = 300/" /etc/php/7.2/fpm/php.ini
 mkdir -p /var/run/php
 mkdir -p /var/log/php-fpm
-touch /var/run/php/php7.4-fpm.sock
+touch /var/run/php/php7.2-fpm.sock
 
 # ============ Install Composer, PHPCS
-curl -sS https://getcomposer.org/installer | php
+curl -sS https://getcomposer.org/installer | php -- --version=2.1.0
+
 mv composer.phar /usr/local/bin/composer
 composer global require "squizlabs/php_codesniffer=*"
 

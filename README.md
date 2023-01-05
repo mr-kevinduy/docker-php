@@ -8,6 +8,7 @@ Docker for php, composer, linux packages, nodejs, yarn, parcel-bundler and gulp-
 - kevinduy/php:8.1 (kevinduy/php:latest)
 - kevinduy/php:8.0
 - kevinduy/php:7.4
+- kevinduy/php:7.2
 - kevinduy/php:2.0
 - kevinduy/php:1.0
 
@@ -79,11 +80,25 @@ winpty docker-compose exec workspace bash
 - fpm
 - supervisor
 - php config:
-  + display_errors = On
-  + memory_limit = 1024M
-  + post_max_size = 512M
-  + upload_max_filesize = 1024M
-  + max_execution_time = 300
+ + display_errors = On
+ + memory_limit = 1024M
+ + post_max_size = 512M
+ + upload_max_filesize = 1024M
+ + max_execution_time = 300
+
+### [V7.2]
+- Ubuntu 22.04
+- php 7.2
+- nodejs 16.x
+- composer v2.1.0
+- fpm
+- supervisor
+- php config:
+ + display_errors = On
+ + memory_limit = 1024M
+ + post_max_size = 512M
+ + upload_max_filesize = 1024M
+ + max_execution_time = 300
 
 ### [V2.0]
 - php 7.3
