@@ -1,8 +1,9 @@
 FROM ubuntu:22.04
 
-MAINTAINER KevinDuy <mr.kevinduy@gmail.com>
+LABEL org.opencontainers.image.vendor="KevinDuy"
+LABEL org.opencontainers.image.authors="mr.kevinduy@gmail.com"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install packages
 ADD install.sh /install.sh

@@ -16,8 +16,6 @@ Docker for php, composer, linux packages, nodejs, yarn, parcel-bundler and gulp-
 - __docker-compose.yml__:
 
 ```yaml
-version: "3"
-
 services:
   workspace:
     image: kevinduy/php
@@ -30,12 +28,16 @@ services:
 - __Running docker compose__:
 
 ```sh
-docker-compose up -d
+# MacOS new
+docker compose up -d
+docker compose exec workspace bash
 
 # Linux
+docker-compose up -d
 docker-compose exec workspace bash
 
 # Windows
+winpty docker-compose up -d
 winpty docker-compose exec workspace bash
 ```
 
@@ -43,17 +45,30 @@ winpty docker-compose exec workspace bash
 ```sh
 cd /path/to/docker-php
 docker rmi kevinduy/php:latest
-docker build -t kevinduy/php:8.2 .
-docker push kevinduy/php:8.2
-docker tag kevinduy/php:8.2 kevinduy/php:latest
+docker build -t kevinduy/php:8.4 .
+docker push kevinduy/php:8.4
+docker tag kevinduy/php:8.4 kevinduy/php:latest
 docker push kevinduy/php:latest
 
 git add .
-git commit -m "v8.2"
-git push origin php82
+git commit -m "v8.4"
+git push origin php84
 ```
 
 # 3. Changelog
+
+### [V8.4]
+- Ubuntu 22.04
+- php 8.4
+- composer v2
+- fpm
+- supervisor
+- support. for laravel 9x and above.
+- php config:
+  + display_errors = On
+  + memory_limit = 1024M
+  + post_max_size = 500M
+  + upload_max_filesize = 500M
 
 ### [V8.2]
 - Ubuntu 22.04
