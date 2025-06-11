@@ -1,5 +1,6 @@
 services:
   app:
+    image: kevinduy/php:8.4
     build: .
     tty: true
     restart: always
