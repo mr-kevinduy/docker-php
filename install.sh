@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# php 8.4
 
 apt update
 apt upgrade -y
@@ -88,7 +87,11 @@ mv composer.phar /usr/local/bin/composer
 composer global require "squizlabs/php_codesniffer=*"
 
 # Create symlink
-ln -s /root/.composer/vendor/bin/phpcs /usr/bin/phpcs
+# ln -s /root/.composer/vendor/bin/phpcs /usr/bin/phpcs
+
+# Add PATH env for global composer vendor bin
+echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> "$HOME/.bashrc"
 
 # ============ Clean up
 # apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+

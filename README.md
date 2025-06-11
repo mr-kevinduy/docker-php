@@ -45,7 +45,8 @@ winpty docker-compose exec workspace bash
 ```sh
 cd /path/to/docker-php
 docker rmi kevinduy/php:latest
-docker build -t kevinduy/php:8.4 .
+# docker build -t kevinduy/php:8.4 .
+docker build --no-cache --progress=plain -t kevinduy/php:8.4 . 2>&1 | tee ./.docker/build.log
 docker push kevinduy/php:8.4
 docker tag kevinduy/php:8.4 kevinduy/php:latest
 docker push kevinduy/php:latest
